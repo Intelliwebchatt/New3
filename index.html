@@ -1,145 +1,642 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="[META DESCRIPTION HERE]" />
-    <meta name="keywords" content="[KEYWORDS HERE]" />
-
-    <!-- Open Graph / Social Media Placeholders -->
-    <meta property="og:title" content="[OG TITLE HERE]" />
-    <meta property="og:description" content="[OG DESCRIPTION HERE]" />
-    <meta property="og:image" content="[OG IMAGE PLACEHOLDER]" />
-    <meta property="og:url" content="[OG URL HERE]" />
-
-    <!-- Twitter Card Placeholders -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="[TWITTER TITLE HERE]" />
-    <meta name="twitter:description" content="[TWITTER DESCRIPTION HERE]" />
-    <meta name="twitter:image" content="[TWITTER IMAGE PLACEHOLDER]" />
-
-    <!-- Schema.org Markup Placeholder -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "[ORGANIZATION NAME HERE]",
-      "url": "[ORGANIZATION URL HERE]",
-      "logo": "[LOGO URL HERE]"
-    }
-    </script>
-
-    <link rel="stylesheet" href="styles/style.css" />
-    <title>[PAGE TITLE HERE]</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stems & Petals | For The Light Chasers</title>
+    <meta name="description" content="Stems & Petals - A retro-inspired salon for the light chasers. Modern styles with a 70s soul.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&family=Shrikhand&display=swap" rel="stylesheet">
+    
     <style>
-      /* Inline minimal critical CSS for hero section */
-      /* Placeholder classes for structure only */
-      body { margin: 0; font-family: sans-serif; }
-      .hero { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; }
-      .hero h1, .hero p { margin: 0.5em 0; }
-      .hero .cta-btn { padding: 0.75em 1.5em; border: none; cursor: pointer; }
+        /* --- RESET & VARIABLES --- */
+        :root {
+            /* Sunset Palette */
+            --color-cream: #FFF9F0;
+            --color-sun-gold: #E9C46A;
+            --color-terracotta: #E76F51;
+            --color-burnt-sienna: #D65A31;
+            --color-deep-brown: #4A2c2A;
+            --color-twilight-purple: #6D597A;
+            --color-fade-pink: #F4A261;
+            
+            --font-display: 'Shrikhand', cursive;
+            --font-body: 'DM Sans', sans-serif;
+            
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            
+            --radius-btn: 50px;
+            --radius-card: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-cream);
+            color: var(--color-deep-brown);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            font-weight: 400; /* Shrikhand is bold by default */
+            line-height: 1.1;
+            text-transform: lowercase; /* Stylistic choice for retro vibe */
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: var(--color-terracotta);
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--color-twilight-purple);
+            margin-bottom: var(--spacing-md);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--color-burnt-sienna);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        .section-padding {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .text-center { text-align: center; }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--color-terracotta);
+            color: var(--color-cream);
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            border-radius: var(--radius-btn);
+            border: 2px solid var(--color-terracotta);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            text-transform: lowercase;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--color-terracotta);
+            transform: translateY(-3px) rotate(-2deg);
+            box-shadow: 0 10px 20px rgba(231, 111, 81, 0.2);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--color-deep-brown);
+            color: var(--color-deep-brown);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--color-deep-brown);
+            color: var(--color-cream);
+        }
+
+        /* --- HEADER --- */
+        header {
+            padding: var(--spacing-md) 0;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--color-terracotta);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sunflower-icon {
+            color: var(--color-sun-gold);
+            width: 30px;
+            height: 30px;
+            animation: spin 10s linear infinite;
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        nav ul {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        nav a {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--color-deep-brown);
+        }
+
+        nav a:hover {
+            color: var(--color-terracotta);
+        }
+
+        .mobile-toggle { display: none; }
+
+        /* --- HERO --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(255,249,240,0.9) 0%, rgba(255,249,240,0.7) 100%), 
+                        url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=1600');
+            background-size: cover;
+            background-position: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .tagline {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--color-burnt-sienna);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .hero h1 {
+            margin-bottom: 1.5rem;
+            line-height: 1;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: var(--color-deep-brown);
+        }
+
+        /* --- VIBE SECTION --- */
+        .vibe {
+            background-color: var(--color-sun-gold);
+            color: var(--color-deep-brown);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Decorative 70s curves */
+        .curve-separator {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+        .curve-separator svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 60px;
+        }
+        .curve-separator .shape-fill {
+            fill: var(--color-cream);
+        }
+
+        .vibe-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .vibe-img-wrapper {
+            position: relative;
+        }
+
+        .vibe-img {
+            border-radius: 50% 50% 0 0; /* Arch shape */
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            border: 4px solid var(--color-cream);
+            box-shadow: 15px 15px 0px rgba(231, 111, 81, 0.3);
+        }
+
+        /* --- SERVICES --- */
+        .services {
+            background-color: var(--color-cream);
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .service-card {
+            background: white;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-card);
+            border: 2px solid #FDF0D5;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-terracotta);
+        }
+
+        .price {
+            font-family: var(--font-display);
+            color: var(--color-terracotta);
+            font-size: 1.5rem;
+            display: block;
+            margin-top: 1rem;
+        }
+
+        /* --- GALLERY --- */
+        .gallery {
+            background-color: var(--color-fade-pink);
+            color: var(--color-cream);
+        }
+        
+        .gallery h2 { color: var(--color-deep-brown); }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: var(--radius-card);
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* --- CONTACT --- */
+        .contact {
+            background-color: var(--color-twilight-purple);
+            color: var(--color-cream);
+        }
+
+        .contact h2 { color: var(--color-sun-gold); }
+        .contact p { color: #E0E0E0; }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            color: var(--color-sun-gold);
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--color-cream);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--color-sun-gold);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--color-deep-brown);
+            color: var(--color-cream);
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer-sunflower {
+            color: var(--color-terracotta);
+            margin-bottom: 1rem;
+        }
+
+        .attribution {
+            margin-top: 2rem;
+            opacity: 0.5;
+            font-size: 0.75rem;
+        }
+
+        .attribution a { text-decoration: underline; }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            
+            .nav-container { flex-direction: column; gap: 1rem; }
+            nav ul { gap: 1rem; }
+            
+            .vibe-grid { grid-template-columns: 1fr; }
+            .vibe-img { aspect-ratio: 16/9; border-radius: 16px; box-shadow: 10px 10px 0px rgba(231, 111, 81, 0.3); }
+            
+            .contact-layout { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-logo">
-            <img src="logo-placeholder.svg" alt="[BRAND LOGO ALT]" />
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <svg class="sunflower-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L14.5 7.5L20 8L16 12.5L17.5 18L12 15.5L6.5 18L8 12.5L4 8L9.5 7.5L12 2Z" />
+                    <circle cx="12" cy="12" r="3" fill="#4A2c2A" />
+                </svg>
+                stems & petals
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#vibe">Vibe</a></li>
+                    <li><a href="#services">Menu</a></li>
+                    <li><a href="#gallery">Lookbook</a></li>
+                    <li><a href="#book">Book</a></li>
+                </ul>
+            </nav>
         </div>
-        <button class="nav-toggle" aria-label="Toggle Menu">☰</button>
-        <ul class="nav-links">
-            <li><a href="#features">[SECTION 1]</a></li>
-            <li><a href="#about">[SECTION 2]</a></li>
-            <li><a href="#contact">[CONTACT]</a></li>
-        </ul>
-    </nav>
-
-    <!-- Hero Section -->
-    <header class="hero" style="background-image: url('hero-placeholder.jpg');">
-        <h1>[MAIN HEADLINE HERE]</h1>
-        <p>[SUBHEADLINE HERE]</p>
-        <button class="cta-btn">[CALL TO ACTION]</button>
     </header>
 
-    <!-- Key Features/Services Section -->
-    <section id="features" class="features">
-        <div class="feature">
-            <img src="icon-placeholder.svg" alt="[FEATURE ICON ALT]" />
-            <h2>[FEATURE 1 HEADLINE HERE]</h2>
-            <p>[FEATURE 1 SHORT DESCRIPTION HERE]</p>
-        </div>
-        <div class="feature">
-            <img src="icon-placeholder.svg" alt="[FEATURE ICON ALT]" />
-            <h2>[FEATURE 2 HEADLINE HERE]</h2>
-            <p>[FEATURE 2 SHORT DESCRIPTION HERE]</p>
-        </div>
-        <div class="feature">
-            <img src="icon-placeholder.svg" alt="[FEATURE ICON ALT]" />
-            <h2>[FEATURE 3 HEADLINE HERE]</h2>
-            <p>[FEATURE 3 SHORT DESCRIPTION HERE]</p>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="tagline">For the light chasers</span>
+                <h1>Find your bloom in the golden hour.</h1>
+                <p>A men’s and women’s salon blending retro soul with modern style. Let the good vibes and great hair flow.</p>
+                <a href="#book" class="btn">Book Your Glow</a>
+            </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="about-text">
-            <h2>[ABOUT SECTION HEADING HERE]</h2>
-            <p>[ABOUT STORY OR MISSION STATEMENT HERE]</p>
+    <section id="vibe" class="section-padding vibe">
+        <div class="curve-separator">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
         </div>
-        <div class="about-image">
-            <img src="about-image-placeholder.jpg" alt="[ABOUT IMAGE ALT]" />
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <h2>[TESTIMONIALS SECTION HEADING HERE]</h2>
-        <div class="testimonial">
-            <blockquote>"[QUOTE HERE]"</blockquote>
-            <cite>[CUSTOMER NAME HERE]</cite>
-        </div>
-        <div class="testimonial">
-            <blockquote>"[QUOTE HERE]"</blockquote>
-            <cite>[CUSTOMER NAME HERE]</cite>
-        </div>
-        <div class="testimonial">
-            <blockquote>"[QUOTE HERE]"</blockquote>
-            <cite>[CUSTOMER NAME HERE]</cite>
+        
+        <div class="container">
+            <div class="vibe-grid">
+                <div class="vibe-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1521590832169-7dad1a9b708c?auto=format&fit=crop&q=80&w=800" alt="Woman with retro styled hair smiling" class="vibe-img" loading="lazy">
+                </div>
+                <div>
+                    <h2>Retro Soul, <br>Modern Techniques</h2>
+                    <p>Welcome to Stems & Petals. We aren't just a salon; we're a time capsule to the groovy days of the 70s, reimagined for today's trends. Whether you're chasing a shag cut, a sun-kissed balayage, or a clean fade, our stylists are artisans of the aesthetic.</p>
+                    <p>We use eco-conscious products and believe that your hair is the ultimate form of self-expression. Come in, kick back, and let the sunshine in.</p>
+                    <a href="#services" class="btn btn-outline">See Our Menu</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <section id="contact" class="contact">
-        <h2>[CONTACT SECTION HEADING HERE]</h2>
-        <form action="" method="post" class="contact-form">
-            <label for="name">[NAME FIELD LABEL]</label>
-            <input type="text" id="name" name="name" placeholder="[NAME PLACEHOLDER]" required />
-
-            <label for="email">[EMAIL FIELD LABEL]</label>
-            <input type="email" id="email" name="email" placeholder="[EMAIL PLACEHOLDER]" required />
-
-            <label for="message">[MESSAGE FIELD LABEL]</label>
-            <textarea id="message" name="message" placeholder="[MESSAGE PLACEHOLDER]" required></textarea>
-
-            <button type="submit">[SUBMIT BUTTON TEXT]</button>
-
-            <!-- Placeholder for success/failure messages -->
-            <p class="form-status form-success" style="display: none;">[SUCCESS MESSAGE HERE]</p>
-            <p class="form-status form-failure" style="display: none;">[FAILURE MESSAGE HERE]</p>
-        </form>
+    <section id="services" class="section-padding services">
+        <div class="container">
+            <div class="text-center">
+                <h2>The Menu</h2>
+                <p style="max-width: 600px; margin: 0 auto 3rem;">Classic cuts, vivid colors, and styling for everyone. Honest prices for honest work.</p>
+            </div>
+            
+            <div class="service-grid">
+                <div class="service-card">
+                    <h3>The Women's Cut</h3>
+                    <p>Includes wash, groovy blowout, and styling.</p>
+                    <span class="price">$65+</span>
+                </div>
+                <div class="service-card">
+                    <h3>The Men's Cut</h3>
+                    <p>Scissor over comb, fades, and beard trims.</p>
+                    <span class="price">$40+</span>
+                </div>
+                <div class="service-card">
+                    <h3>Sun-Kissed Color</h3>
+                    <p>Balayage or full highlights for that endless summer look.</p>
+                    <span class="price">$150+</span>
+                </div>
+                <div class="service-card">
+                    <h3>The Root Touch</h3>
+                    <p>Keep it fresh. Single process color application.</p>
+                    <span class="price">$85+</span>
+                </div>
+                <div class="service-card">
+                    <h3>70s Blowout</h3>
+                    <p>Big volume, big curls, big vibes. Perfect for events.</p>
+                    <span class="price">$50+</span>
+                </div>
+                <div class="service-card">
+                    <h3>Treatments</h3>
+                    <p>Deep conditioning for thirsty stems.</p>
+                    <span class="price">$30</span>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Footer Section -->
-    <footer class="footer">
-        <ul class="footer-links">
-            <li><a href="[PRIVACY POLICY URL HERE]">[PRIVACY POLICY]</a></li>
-            <li><a href="[TERMS OF SERVICE URL HERE]">[TERMS OF SERVICE]</a></li>
-        </ul>
-        <p>[FOOTER COPYRIGHT OR ADDITIONAL INFO HERE]</p>
+    <section id="gallery" class="section-padding gallery">
+        <div class="container">
+            <h2 class="text-center">Lookbook</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&q=80&w=600" alt="Trendy men's haircut" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&q=80&w=600" alt="Woman with curly hair and flowers" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1492106087820-71f171ce71d0?auto=format&fit=crop&q=80&w=600" alt="Stylist working on hair color" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&q=80&w=600" alt="Retro vibe hair salon interior" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="book" class="section-padding contact">
+        <div class="container">
+            <div class="contact-layout">
+                <div>
+                    <h2>Book Your Spot</h2>
+                    <p>Ready to chase the light? Fill out the form to request an appointment. We'll get back to you with available slots quicker than a sunset fades.</p>
+                    
+                    <div style="margin-top: 2rem;">
+                        <h3>Hours</h3>
+                        <ul style="opacity: 0.9;">
+                            <li>Tue - Fri: 10am - 7pm</li>
+                            <li>Saturday: 9am - 4pm</li>
+                            <li>Sun - Mon: Gone surfing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <form name="booking" method="POST" data-netlify="true">
+                    <input type="hidden" name="form-name" value="booking">
+                    
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" id="name" name="name" class="form-input" required placeholder="Your name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-input" required placeholder="peace@love.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service" class="form-label">Service Needed</label>
+                        <select id="service" name="service" class="form-input">
+                            <option value="cut">Haircut (Men/Women)</option>
+                            <option value="color">Color / Highlights</option>
+                            <option value="style">Styling / Blowout</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your hair goals..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%; border-color: var(--color-sun-gold); color: var(--color-deep-brown); background: var(--color-sun-gold);">Send Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-sunflower">
+                <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2L14.5 7.5L20 8L16 12.5L17.5 18L12 15.5L6.5 18L8 12.5L4 8L9.5 7.5L12 2Z" />
+                </svg>
+            </div>
+            <h3>stems & petals</h3>
+            <p>For the light chasers.</p>
+            <p>&copy; 2024 Stems & Petals Salon. All rights reserved.</p>
+            
+            <div class="attribution">
+                Images sourced from <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>. 
+                Photography by <a href="https://unsplash.com/@averieclaire">Averie Woodard</a>, 
+                <a href="https://unsplash.com/@kyle_smith">Kyle Smith</a>, and others.
+            </div>
+        </div>
     </footer>
 
-    <script src="scripts/script.js"></script>
+    <script>
+        // Smooth scrolling script
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add a scroll listener to change header background
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(255, 249, 240, 0.95)';
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+                header.style.padding = '1rem 0';
+                header.style.transition = 'all 0.3s ease';
+            } else {
+                header.style.background = 'transparent';
+                header.style.boxShadow = 'none';
+                header.style.padding = '2rem 0';
+            }
+        });
+    </script>
 </body>
 </html>
